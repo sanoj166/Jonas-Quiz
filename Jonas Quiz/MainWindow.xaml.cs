@@ -30,8 +30,18 @@ namespace Jonas_Quiz
         {
             try
             {
-                string quizFilePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MyQuiz", "quiz.json");
+                string appDataFolderPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MyQuiz");
+                string quizFilePath = System.IO.Path.Combine(appDataFolderPath, "quiz.json");
 
+                // Create the folder if it doesn't exist
+                if (!Directory.Exists(appDataFolderPath))
+                {
+                    Directory.CreateDirectory(appDataFolderPath);
+
+                    // Copy the quiz file from your project to the "MyQuiz" folder
+                    string sourceFilePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "quiz.json");
+                    File.Copy(sourceFilePath, quizFilePath);
+                }
 
                 if (File.Exists(quizFilePath))
                 {
@@ -43,17 +53,9 @@ namespace Jonas_Quiz
                     {
                         MessageBox.Show("Quiz loaded successfully!");
 
-                        
                         QuizWindow quizWindow = new QuizWindow();
                         quizWindow.SetQuiz(quiz);
-
-                        
                         quizWindow.PropertyChanged += QuizWindow_PropertyChanged;
-
-                        
-                        quizWindow.SetQuiz(quiz);
-
-                        
                         quizWindow.Show();
                     }
                     else
@@ -63,7 +65,7 @@ namespace Jonas_Quiz
                 }
                 else
                 {
-                    MessageBox.Show("Quiz file not found!");
+                    MessageBox.Show("Quiz file not found. Please make sure the quiz file is in the 'MyQuiz' folder.");
                 }
             }
             catch (Exception ex)
@@ -71,6 +73,8 @@ namespace Jonas_Quiz
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
         }
+
+
 
 
 

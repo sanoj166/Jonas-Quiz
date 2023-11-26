@@ -12,8 +12,14 @@ namespace Jonas_Quiz.DataModels
     {
         private static readonly string AppDataFolderPath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-            "Jonas_Quiz"
+            "MyQuiz"
         );
+
+        static QuizFileHandler()
+        {
+            Directory.CreateDirectory(AppDataFolderPath);
+        }
+
 
         public static async Task SaveQuizAsync(string fileName, Quiz quiz)
         {

@@ -29,6 +29,8 @@ namespace Jonas_Quiz
 
         private Quiz quiz;
 
+        private string currentQuestionText = string.Empty;
+
 
         public int QuestionsAnswered
         {
@@ -43,9 +45,21 @@ namespace Jonas_Quiz
             }
         }
 
-        
 
-        
+
+        public string CurrentQuestionText
+        {
+            get { return currentQuestionText; }
+            set
+            {
+                if (currentQuestionText != value)
+                {
+                    currentQuestionText = value;
+                    OnPropertyChanged(nameof(CurrentQuestionText));
+                }
+            }
+        }
+
 
 
 
@@ -65,53 +79,57 @@ namespace Jonas_Quiz
             SetQuiz(quiz);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private string currentQuestionText;
-        public string CurrentQuestionText
-        {
-            get { return currentQuestionText; }
-            set
-            {
-                currentQuestionText = value;
-                OnPropertyChanged(nameof(CurrentQuestionText));
-            }
-        }
+
+
 
 
         private void LoadNextQuestion()
         {
-            currentRandomQuestion = quiz.GetRandomQuestion();
-
-            if (currentRandomQuestion != null)
+            if (QuestionsAnswered < 10) // Adjust this condition based on the total number of questions in your quiz
             {
-                CurrentQuestionText = currentRandomQuestion.Statement;
+                currentRandomQuestion = quiz.GetRandomQuestion();
 
-                if (currentRandomQuestion.Options != null && currentRandomQuestion.Options.Any())
+                if (currentRandomQuestion != null)
                 {
-                    LabelOption1.Content = currentRandomQuestion.Options[0].Option;
-                    LabelOption2.Content = currentRandomQuestion.Options[1].Option;
-                    LabelOption3.Content = currentRandomQuestion.Options[2].Option;
+                    CurrentQuestionText = currentRandomQuestion.Statement;
+
+                    if (currentRandomQuestion.Options != null && currentRandomQuestion.Options.Any())
+                    {
+                        LabelOption1.Content = currentRandomQuestion.Options[0].Option;
+                        LabelOption2.Content = currentRandomQuestion.Options[1].Option;
+                        LabelOption3.Content = currentRandomQuestion.Options[2].Option;
+                    }
+                }
+                else
+                {
+                    // No more questions
+                    MessageBox.Show("Quiz completed!");
+                    ProgressBarCorrect.Value = 0; // Reset progress bar
+                    SetQuiz(quiz); // Optionally, you may want to start a new quiz
                 }
 
                 QuestionsAnswered++;
             }
             else
             {
-                // Quiz completed or no more questions
+                // Quiz completed
                 MessageBox.Show("Quiz completed!");
                 ProgressBarCorrect.Value = 0; // Reset progress bar
                 SetQuiz(quiz); // Optionally, you may want to start a new quiz
+                QuestionsAnswered = 0; // Reset the counter
             }
         }
 
 
-        private Question currentRandomQuestion;
+
+        private Question? currentRandomQuestion;
 
         public void SetQuiz(Quiz quiz)
         {
@@ -168,16 +186,8 @@ namespace Jonas_Quiz
                 bool isCorrect = currentRandomQuestion.IsCorrectOption(selectedOption);
                 Debug.WriteLine($"Is the answer correct? {isCorrect}");
 
-                if (isCorrect)
-                {
-                    MessageBox.Show("Answer is correct!", "Correct Answer", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Answer is incorrect.", "Incorrect Answer", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
-
                 UpdateProgressBar(isCorrect);
+
                 LoadNextQuestion();
             }
             else
@@ -185,6 +195,7 @@ namespace Jonas_Quiz
                 MessageBox.Show("Quiz or current question is not initialized.");
             }
         }
+
 
 
 

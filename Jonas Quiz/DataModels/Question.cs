@@ -11,12 +11,12 @@ namespace Jonas_Quiz.DataModels
         public class Answer
         {
             public int OptionNumber { get; set; }
-            public string Option { get; set; }
+            public string? Option { get; set; }
         }
 
-        public string Statement { get; set; }
-        public Answer CorrectAnswer { get; set; }
-        public List<Answer> Options { get; set; }
+        public string? Statement { get; set; }
+        public Answer CorrectAnswer { get; set; } = new Answer();
+        public List<Answer> Options { get; set; } = new List<Answer>();
 
         public bool IsCorrectOption(string selectedOption)
         {

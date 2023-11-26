@@ -32,7 +32,7 @@ namespace Jonas_Quiz.DataModels
             _questions = shuffledQuestions;
         }
 
-        public Question GetRandomQuestion()
+        public Question? GetRandomQuestion()
         {
             Random random = new Random();
             int randomIndex = random.Next(_questions.Count());
