@@ -1,0 +1,887 @@
+{
+  "questions": [
+    {
+      "number": 1,
+      "statement": "What is the name of Frodo's uncle, who leaves him the Ring?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Bilbo Baggins"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Gollum"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Saruman"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 1,
+        "option": "Bilbo Baggins"
+      }
+    },
+    {
+      "number": 2,
+      "statement": "Who is the heir of Isildur and the rightful king of Gondor?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Faramir"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Aragorn"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Boromir"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 2,
+        "option": "Aragorn"
+      }
+    },
+    {
+      "number": 3,
+      "statement": "What is the name of the wizard who becomes corrupted and joins Sauron?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Radagast"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Gandalf"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Saruman"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 3,
+        "option": "Saruman"
+      }
+    },
+    {
+      "number": 4,
+      "statement": "Who is Frodo's gardener and close friend?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Pippin"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Samwise Gamgee"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Merry"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 2,
+        "option": "Samwise Gamgee"
+      }
+    },
+    {
+      "number": 5,
+      "statement": "Where is the One Ring destroyed?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Mount Doom"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Mordor"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Isengard"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 1,
+        "option": "Mount Doom"
+      }
+    },
+    {
+      "number": 6,
+      "statement": "Who is the Dark Lord and the primary antagonist in The Lord of the Rings?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Sauron"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Saruman"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Gollum"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 1,
+        "option": "Sauron"
+      }
+    },
+    {
+      "number": 7,
+      "statement": "What creature guides Frodo and Sam through the Dead Marshes?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Gollum"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Tom Bombadil"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Gimli"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 1,
+        "option": "Gollum"
+      }
+    },
+    {
+      "number": 8,
+      "statement": "What is the name of Aragorn's sword?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Glamdring"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Narsil"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Andúril"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 3,
+        "option": "Andúril"
+      }
+    },
+    {
+      "number": 9,
+      "statement": "Who is the Elf that accompanies the Fellowship of the Ring?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Legolas"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Elrond"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Galadriel"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 1,
+        "option": "Legolas"
+      }
+    },
+    {
+      "number": 10,
+      "statement": "What is the name of the river that flows through Lothlórien?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Anduin"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Entwash"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Celebrant"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 3,
+        "option": "Celebrant"
+      }
+    },
+    {
+      "number": 11,
+      "statement": "Who is the leader of the Nazgûl, the Ringwraiths?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Witch-king of Angmar"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Gothmog"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Khamûl"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 1,
+        "option": "Witch-king of Angmar"
+      }
+    },
+    {
+      "number": 12,
+      "statement": "What is Gollum's real name before he becomes corrupted by the Ring?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Sméagol"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Déagol"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Hobbit"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 1,
+        "option": "Sméagol"
+      }
+    },
+    {
+      "number": 13,
+      "statement": "Where does Frodo first meet Aragorn?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Bree"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Rivendell"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Gondor"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 1,
+        "option": "Bree"
+      }
+    },
+    {
+      "number": 14,
+      "statement": "What is the name of the Ents' home?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Fangorn Forest"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Old Forest"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Mirkwood"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 1,
+        "option": "Fangorn Forest"
+      }
+    },
+    {
+      "number": 15,
+      "statement": "Who is the Steward of Gondor during the events of The Lord of the Rings?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Denethor"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Faramir"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Boromir"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 1,
+        "option": "Denethor"
+      }
+    },
+    {
+      "number": 16,
+      "statement": "What creature does Frodo encounter in the Dead Marshes?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Gollum"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Nazgûl"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Barrow-wight"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 2,
+        "option": "Nazgûl"
+      }
+    },
+    {
+      "number": 17,
+      "statement": "What is the name of the large spider that Frodo encounters in Shelob's Lair?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Arachne"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Ungoliant"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Shelob"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 3,
+        "option": "Shelob"
+      }
+    },
+    {
+      "number": 18,
+      "statement": "Who says the famous line 'A wizard is never late, nor is he early, he arrives precisely when he means to'?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Saruman"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Gandalf"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Radagast"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 2,
+        "option": "Gandalf"
+      }
+    },
+    {
+      "number": 19,
+      "statement": "What gift does Galadriel give Frodo before the Fellowship leaves Lothlórien?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Elven cloak"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Phial of Galadriel"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Lebethron"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 2,
+        "option": "Phial of Galadriel"
+      }
+    },
+    {
+      "number": 20,
+      "statement": "What is the name of the Hobbit who volunteers to carry the Ring to Mordor?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Frodo Baggins"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Samwise Gamgee"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Merry Brandybuck"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 1,
+        "option": "Frodo Baggins"
+      }
+    },
+    {
+      "number": 21,
+      "statement": "What is the capital city of Rohan?",
+      "options": [
+        {
+          "optionNumber": 1,
+          "option": "Edoras"
+        },
+        {
+          "optionNumber": 2,
+          "option": "Helms Deep"
+        },
+        {
+          "optionNumber": 3,
+          "option": "Minas Tirith"
+        }
+      ],
+      "correctAnswer": {
+        "optionNumber": 1,
+        "option": "Edoras"
+      }
+    },
+    {
+      "number": 22,
+      "statement": "Who is the Lord of the Eagles in The Lord of the Rings?",
+      "options": [
+        {
+          "OptionNumber": 1,
+          "Option": "Gwaihir"
+        },
+        {
+          "OptionNumber": 2,
+          "Option": "Gandalf"
+        },
+        {
+          "OptionNumber": 3,
+          "Option": "Thorondor"
+        }
+      ],
+      "correctAnswer": {
+        "OptionNumber": 1,
+        "Option": "Gwaihir"
+      }
+    },
+    {
+      "number": 23,
+      "statement": "What is the name of Sam's wife?",
+      "options": [
+        {
+          "OptionNumber": 1,
+          "Option": "Rosie Cotton"
+        },
+        {
+          "OptionNumber": 2,
+          "Option": "Goldberry"
+        },
+        {
+          "OptionNumber": 3,
+          "Option": "Lobelia Sackville-Baggins"
+        }
+      ],
+      "correctAnswer": {
+        "OptionNumber": 1,
+        "Option": "Rosie Cotton"
+      }
+    },
+    {
+      "number": 24,
+      "statement": "What is the name of Legolas' father?",
+      "options": [
+        {
+          "OptionNumber": 1,
+          "Option": "Thranduil"
+        },
+        {
+          "OptionNumber": 2,
+          "Option": "Celeborn"
+        },
+        {
+          "OptionNumber": 3,
+          "Option": "Haldir"
+        }
+      ],
+      "correctAnswer": {
+        "OptionNumber": 1,
+        "Option": "Thranduil"
+      }
+    },
+    {
+      "number": 25,
+      "statement": "What is the Elvish name for the land of men?",
+      "options": [
+        {
+          "OptionNumber": 1,
+          "Option": "Númenor"
+        },
+        {
+          "OptionNumber": 2,
+          "Option": "Eriador"
+        },
+        {
+          "OptionNumber": 3,
+          "Option": "Mordor"
+        }
+      ],
+      "correctAnswer": {
+        "OptionNumber": 2,
+        "Option": "Eriador"
+      }
+    },
+    {
+      "number": 26,
+      "statement": "Who is known as the White Rider?",
+      "options": [
+        {
+          "OptionNumber": 1,
+          "Option": "Gandalf"
+        },
+        {
+          "OptionNumber": 2,
+          "Option": "Saruman"
+        },
+        {
+          "OptionNumber": 3,
+          "Option": "Radagast"
+        }
+      ],
+      "correctAnswer": {
+        "OptionNumber": 1,
+        "Option": "Gandalf"
+      }
+    },
+    {
+      "number": 27,
+      "statement": "What is the name of Frodo's horse?",
+      "options": [
+        {
+          "OptionNumber": 1,
+          "Option": "Shadowfax"
+        },
+        {
+          "OptionNumber": 2,
+          "Option": "Brego"
+        },
+        {
+          "OptionNumber": 3,
+          "Option": "Bill"
+        }
+      ],
+      "correctAnswer": {
+        "OptionNumber": 3,
+        "Option": "Bill"
+      }
+    },
+    {
+      "number": 28,
+      "statement": "Who is the keeper of the Shire, responsible for the maintenance of the land?",
+      "options": [
+        {
+          "OptionNumber": 1,
+          "Option": "Bilbo Baggins"
+        },
+        {
+          "OptionNumber": 2,
+          "Option": "Merry Brandybuck"
+        },
+        {
+          "OptionNumber": 3,
+          "Option": "Samwise Gamgee"
+        }
+      ],
+      "correctAnswer": {
+        "OptionNumber": 3,
+        "Option": "Samwise Gamgee"
+      }
+    },
+    {
+      "number": 29,
+      "statement": "What is the name of Frodo's sword?",
+      "options": [
+        {
+          "OptionNumber": 1,
+          "Option": "Glamdring"
+        },
+        {
+          "OptionNumber": 2,
+          "Option": "Andúril"
+        },
+        {
+          "OptionNumber": 3,
+          "Option": "Sting"
+        }
+      ],
+      "correctAnswer": {
+        "OptionNumber": 3,
+        "Option": "Sting"
+      }
+    },
+    {
+      "number": 30,
+      "statement": "Who is the master of the Ents?",
+      "options": [
+        {
+          "OptionNumber": 1,
+          "Option": "Treebeard"
+        },
+        {
+          "OptionNumber": 2,
+          "Option": "Quickbeam"
+        },
+        {
+          "OptionNumber": 3,
+          "Option": "Old Man Willow"
+        }
+      ],
+      "correctAnswer": {
+        "OptionNumber": 1,
+        "Option": "Treebeard"
+      }
+    },
+    {
+      "number": 31,
+      "statement": "What is the name of Frodo's cousin who becomes the 13th Ring-bearer?",
+      "options": [
+        {
+          "OptionNumber": 1,
+          "Option": "Bilbo Baggins"
+        },
+        {
+          "OptionNumber": 2,
+          "Option": "Drogo Baggins"
+        },
+        {
+          "OptionNumber": 3,
+          "Option": "Lotho Sackville-Baggins"
+        }
+      ],
+      "correctAnswer": {
+        "OptionNumber": 3,
+        "Option": "Lotho Sackville-Baggins"
+      }
+    },
+    {
+      "number": 32,
+      "statement": "Where is the Council of Elrond held?",
+      "options": [
+        {
+          "OptionNumber": 1,
+          "Option": "Rivendell"
+        },
+        {
+          "OptionNumber": 2,
+          "Option": "Lothlórien"
+        },
+        {
+          "OptionNumber": 3,
+          "Option": "Gondor"
+        }
+      ],
+      "correctAnswer": {
+        "OptionNumber": 1,
+        "Option": "Rivendell"
+      }
+    },
+    {
+      "number": 33,
+      "statement": "What is the name of the giant spider in Mirkwood?",
+      "options": [
+        {
+          "OptionNumber": 1,
+          "Option": "Ungoliant"
+        },
+        {
+          "OptionNumber": 2,
+          "Option": "Shelob"
+        },
+        {
+          "OptionNumber": 3,
+          "Option": "Thuringwethil"
+        }
+      ],
+      "correctAnswer": {
+        "OptionNumber": 1,
+        "Option": "Ungoliant"
+      }
+    },
+    {
+      "number": 34,
+      "statement": "Who is known as the 'Steward of Gondor'?",
+      "options": [
+        {
+          "OptionNumber": 1,
+          "Option": "Denethor"
+        },
+        {
+          "OptionNumber": 2,
+          "Option": "Faramir"
+        },
+        {
+          "OptionNumber": 3,
+          "Option": "Boromir"
+        }
+      ],
+      "correctAnswer": {
+        "OptionNumber": 1,
+        "Option": "Denethor"
+      }
+    },
+    {
+      "number": 35,
+      "statement": "What gift does Frodo receive from Bombadil's house?",
+      "options": [
+        {
+          "OptionNumber": 1,
+          "Option": "Magic sword"
+        },
+        {
+          "OptionNumber": 2,
+          "Option": "Mithril coat"
+        },
+        {
+          "OptionNumber": 3,
+          "Option": "Walking stick"
+        }
+      ],
+      "correctAnswer": {
+        "OptionNumber": 3,
+        "Option": "Walking stick"
+      }
+    },
+    {
+      "number": 36,
+      "statement": "Who is Frodo's mother?",
+      "options": [
+        {
+          "OptionNumber": 1,
+          "Option": "Belladonna Took"
+        },
+        {
+          "OptionNumber": 2,
+          "Option": "Primula Brandybuck"
+        },
+        {
+          "OptionNumber": 3,
+          "Option": "Esmeralda Took"
+        }
+      ],
+      "correctAnswer": {
+        "OptionNumber": 2,
+        "Option": "Primula Brandybuck"
+      }
+    },
+    {
+      "number": 37,
+      "statement": "What is the name of Frodo's pony during the journey?",
+      "options": [
+        {
+          "OptionNumber": 1,
+          "Option": "Fatty Lumpkin"
+        },
+        {
+          "OptionNumber": 2,
+          "Option": "Bill"
+        },
+        {
+          "OptionNumber": 3,
+          "Option": "Shadowfax"
+        }
+      ],
+      "correctAnswer": {
+        "OptionNumber": 2,
+        "Option": "Bill"
+      }
+    },
+    {
+      "number": 38,
+      "statement": "What gift does Frodo receive from Galadriel?",
+      "options": [
+        {
+          "OptionNumber": 1,
+          "Option": "Elven cloak"
+        },
+        {
+          "OptionNumber": 2,
+          "Option": "Phial of Galadriel"
+        },
+        {
+          "OptionNumber": 3,
+          "Option": "Lembas bread"
+        }
+      ],
+      "correctAnswer": {
+        "OptionNumber": 2,
+        "Option": "Phial of Galadriel"
+      }
+    },
+    {
+      "number": 39,
+      "statement": "Who is the first character to speak in 'The Fellowship of the Ring' film?",
+      "options": [
+        {
+          "OptionNumber": 1,
+          "Option": "Frodo Baggins"
+        },
+        {
+          "OptionNumber": 2,
+          "Option": "Gandalf"
+        },
+        {
+          "OptionNumber": 3,
+          "Option": "Galadriel"
+        }
+      ],
+      "correctAnswer": {
+        "OptionNumber": 3,
+        "Option": "Galadriel"
+      }
+    },
+    {
+      "number": 40,
+      "statement": "What is the name of Aragorn's lover, an Elf maiden?",
+      "options": [
+        {
+          "OptionNumber": 1,
+          "Option": "Arwen"
+        },
+        {
+          "OptionNumber": 2,
+          "Option": "Galadriel"
+        },
+        {
+          "OptionNumber": 3,
+          "Option": "Éowyn"
+        }
+      ],
+      "correctAnswer": {
+        "OptionNumber": 1,
+        "Option": "Arwen"
+      }
+    }
+  ]
+}
+
+
+
