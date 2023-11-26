@@ -33,14 +33,14 @@ namespace Jonas_Quiz
                 string appDataFolderPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MyQuiz");
                 string quizFilePath = System.IO.Path.Combine(appDataFolderPath, "quiz.json");
 
-                // Create the folder if it doesn't exist
+
                 if (!Directory.Exists(appDataFolderPath))
                 {
                     Directory.CreateDirectory(appDataFolderPath);
 
-                    // Copy the quiz file from your project to the "MyQuiz" folder
-                    string sourceFilePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "quiz.json");
-                    File.Copy(sourceFilePath, quizFilePath);
+                    
+                    string sourceFilePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MyQuiz", "quiz.json");
+                    System.IO.File.Copy(sourceFilePath, quizFilePath);
                 }
 
                 if (File.Exists(quizFilePath))
