@@ -1,36 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.ComponentModel;
 using Jonas_Quiz.DataModels;
-using System.Linq.Expressions;
-using System.Diagnostics;
+using Newtonsoft.Json;
 
 namespace Jonas_Quiz
 {
-    /// <summary>
-    /// Interaction logic for QuizWindow.xaml
-    /// </summary>
     public partial class QuizWindow : Window, INotifyPropertyChanged
     {
-
         private int questionsAnswered;
-
         private Quiz quiz;
-
         private string currentQuestionText = string.Empty;
-
 
         public int QuestionsAnswered
         {
@@ -41,10 +26,16 @@ namespace Jonas_Quiz
                 {
                     questionsAnswered = value;
                     OnPropertyChanged(nameof(QuestionsAnswered));
+                    OnPropertyChanged(nameof(QuestionsAnsweredLabel));
+
                 }
             }
         }
 
+        public string QuestionsAnsweredLabel
+        {
+            get { return $"Questions Answered: {QuestionsAnswered}/10"; }
+        }
 
 
         public string CurrentQuestionText
@@ -60,30 +51,33 @@ namespace Jonas_Quiz
             }
         }
 
-
-
-
         public QuizWindow()
         {
             InitializeComponent();
             DataContext = this;
-            quiz = new Quiz();
+            
             StartQuiz();
+            QuestionsAnswered = 0;
         }
 
-
-
-
-        private void StartQuiz()
+        public void StartQuiz()
         {
-            SetQuiz(quiz);
-        }
+            string quizFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MyQuiz", "quiz.json");
+            string json = File.ReadAllText(quizFilePath);
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+            quiz = JsonConvert.DeserializeObject<Quiz>(json);
 
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            ShuffleQuestions();
+
+            currentIndex = 0;
+            QuestionsAnswered = 0;
+            OnPropertyChanged(nameof(QuestionsAnswered));
+            LoadNextQuestion();
+
+            ProgressBarCorrect.Value = 0;
+            int initialPercentage = (int)Math.Round((ProgressBarCorrect.Value / ProgressBarCorrect.Maximum) * 100);
+            ProgressBarCorrect.ToolTip = $"{initialPercentage}% Correct";
+            PercentageTextBlock.Text = $"{initialPercentage}%";
         }
 
 
@@ -92,9 +86,9 @@ namespace Jonas_Quiz
 
         private void LoadNextQuestion()
         {
-            if (QuestionsAnswered < 10) // Adjust this condition based on the total number of questions in your quiz
+            if (QuestionsAnswered < 10)
             {
-                currentRandomQuestion = quiz.GetRandomQuestion();
+                currentRandomQuestion = quiz.GetNextQuestion();
 
                 if (currentRandomQuestion != null)
                 {
@@ -106,55 +100,65 @@ namespace Jonas_Quiz
                         LabelOption2.Content = currentRandomQuestion.Options[1].Option;
                         LabelOption3.Content = currentRandomQuestion.Options[2].Option;
                     }
+                    else
+                    {
+                        MessageBox.Show("Error loading options for the question. Please try again.");
+                        ResetQuiz();
+                    }
                 }
                 else
                 {
-                    // No more questions
-                    MessageBox.Show("Quiz completed!");
-                    ProgressBarCorrect.Value = 0; // Reset progress bar
-                    SetQuiz(quiz); // Optionally, you may want to start a new quiz
+                    MessageBox.Show("Error loading question. Please try again.");
+                    ResetQuiz();
                 }
-
-                QuestionsAnswered++;
             }
             else
             {
-                // Quiz completed
-                MessageBox.Show("Quiz completed!");
-                ProgressBarCorrect.Value = 0; // Reset progress bar
-                SetQuiz(quiz); // Optionally, you may want to start a new quiz
-                QuestionsAnswered = 0; // Reset the counter
+                int correctAnswers = (int)Math.Round((ProgressBarCorrect.Value / ProgressBarCorrect.Maximum) * 10);
+                MessageBox.Show($"Quiz completed! You answered {correctAnswers} questions correctly.", "Quiz Completed");
+                ResetQuiz();
+                Close();
             }
         }
 
 
+
+        private void ResetQuiz()
+        {
+            ProgressBarCorrect.Value = 0;
+            SetQuiz(quiz);
+            ClearUI();
+            Debug.WriteLine("Quiz reset.");
+        }
+
+        private void ClearUI()
+        {
+            CurrentQuestionText = string.Empty;
+            LabelOption1.Content = string.Empty;
+            LabelOption2.Content = string.Empty;
+            LabelOption3.Content = string.Empty;
+        }
 
         private Question? currentRandomQuestion;
 
-        public void SetQuiz(Quiz quiz)
+        public void SetQuiz(Quiz newQuiz)
         {
-            if (quiz != null && quiz.Questions != null && quiz.Questions.Any())
+            if (newQuiz != null && newQuiz.Questions != null && newQuiz.Questions.Any())
             {
-                if (currentRandomQuestion == null || ProgressBarCorrect.Value == ProgressBarCorrect.Maximum)
+                quiz = newQuiz;
+                currentRandomQuestion = quiz.GetNextQuestion();
+                CurrentQuestionText = currentRandomQuestion.Statement;
+
+                if (currentRandomQuestion.Options != null && currentRandomQuestion.Options.Any())
                 {
-                    currentRandomQuestion = quiz.GetRandomQuestion();
-                    CurrentQuestionText = currentRandomQuestion.Statement;
-
-                    if (currentRandomQuestion.Options != null && currentRandomQuestion.Options.Any())
-                    {
-                        LabelOption1.Content = currentRandomQuestion.Options[0].Option;
-                        LabelOption2.Content = currentRandomQuestion.Options[1].Option;
-                        LabelOption3.Content = currentRandomQuestion.Options[2].Option;
-                    }
-
-                    QuestionsAnswered = 0;
+                    LabelOption1.Content = currentRandomQuestion.Options[0].Option;
+                    LabelOption2.Content = currentRandomQuestion.Options[1].Option;
+                    LabelOption3.Content = currentRandomQuestion.Options[2].Option;
                 }
+
+                QuestionsAnswered = 0;
             }
         }
-
-
-
-
 
         private void Option1Button_Click(object sender, RoutedEventArgs e)
         {
@@ -171,24 +175,29 @@ namespace Jonas_Quiz
             CheckAnswer("3");
         }
 
-
-
-
-
-
-
         private void CheckAnswer(string selectedOption)
         {
             Debug.WriteLine($"Checking answer for option: {selectedOption}");
 
             if (quiz != null && currentRandomQuestion != null)
             {
+                QuestionsAnswered++;
                 bool isCorrect = currentRandomQuestion.IsCorrectOption(selectedOption);
                 Debug.WriteLine($"Is the answer correct? {isCorrect}");
 
-                UpdateProgressBar(isCorrect);
+                if (isCorrect)
+                {
+                    MessageBox.Show("Answer is correct!");
+                    UpdateProgressBar(true);
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect answer!");
+                }
 
-                LoadNextQuestion();
+                LoadNextQuestion(); 
+
+                Debug.WriteLine("After loading next question.");
             }
             else
             {
@@ -196,21 +205,11 @@ namespace Jonas_Quiz
             }
         }
 
-
-
-
-
-
-
-
-
-
-
         private void UpdateProgressBar(bool isCorrect)
         {
             if (isCorrect)
             {
-                ProgressBarCorrect.Value += 10; // Increment the progress bar value by 10 for each correct answer
+                ProgressBarCorrect.Value += 10;
                 Debug.WriteLine("Answer is correct.");
             }
             else
@@ -218,14 +217,24 @@ namespace Jonas_Quiz
                 Debug.WriteLine("Answer is incorrect.");
             }
 
+            int correctAnswers = (int)Math.Round((ProgressBarCorrect.Value / ProgressBarCorrect.Maximum) * 10);
+            int correctPercentage = (int)Math.Round((ProgressBarCorrect.Value / ProgressBarCorrect.Maximum) * 100);
+
+            ProgressBarCorrect.ToolTip = $"{correctPercentage}% Correct";
+            PercentageTextBlock.Text = $"{correctPercentage}%";
+
             if (ProgressBarCorrect.Value == ProgressBarCorrect.Maximum)
             {
-                MessageBox.Show("Quiz completed!"); // You can customize this message as needed
-                                                    // Optionally, you may want to reset the progress bar and start a new quiz
+                MessageBox.Show($"Quiz completed! You answered {correctAnswers}/10 questions correctly.", "Quiz Completed");
                 ProgressBarCorrect.Value = 0;
-                SetQuiz(quiz);
+                Close();
             }
         }
+
+
+
+
+
 
 
 
@@ -236,7 +245,7 @@ namespace Jonas_Quiz
             if (mainWindow != null)
             {
                 mainWindow.Show();
-                mainWindow.Focus(); 
+                mainWindow.Focus();
             }
             else
             {
@@ -244,8 +253,23 @@ namespace Jonas_Quiz
                 mainWindow.Show();
             }
 
-            Close(); 
+            Close();
         }
 
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private int currentIndex = 0;
+
+        private void ShuffleQuestions()
+        {
+            quiz.ShuffleQuestions();
+        }
+
+        
     }
 }

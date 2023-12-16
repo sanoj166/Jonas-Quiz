@@ -40,7 +40,7 @@ namespace Jonas_Quiz
 
                     
                     string sourceFilePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MyQuiz", "quiz.json");
-                    System.IO.File.Copy(sourceFilePath, quizFilePath);
+                    System.IO.File.Copy(sourceFilePath, quizFilePath, true);
                 }
 
                 if (File.Exists(quizFilePath))
@@ -56,6 +56,7 @@ namespace Jonas_Quiz
                         QuizWindow quizWindow = new QuizWindow();
                         quizWindow.SetQuiz(quiz);
                         quizWindow.PropertyChanged += QuizWindow_PropertyChanged;
+                        quizWindow.StartQuiz();
                         quizWindow.Show();
                     }
                     else
@@ -81,6 +82,14 @@ namespace Jonas_Quiz
         private void QuitButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+
+        private void EditQuizButton_Click(object sender, RoutedEventArgs e)
+        {
+            EditQuizWindow editQuizWindow = new EditQuizWindow();
+            editQuizWindow.Owner = this;
+            editQuizWindow.ShowDialog();
         }
 
 

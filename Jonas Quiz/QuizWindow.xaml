@@ -35,13 +35,20 @@
         </StackPanel>
 
 
-        <Grid Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Top">
-			<ProgressBar x:Name="ProgressBarCorrect" Width="200" Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,10,0,20"/>
-		</Grid>
+        <StackPanel Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <ProgressBar x:Name="ProgressBarCorrect" Width="200" Height="20" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,10,0,5"/>
+            <TextBlock x:Name="PercentageTextBlock" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        </StackPanel>
 
-		<Label Grid.Row="5" Content="Questions Answered: 0/10" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,10"/>
 
-		<Button Content="Back to Menu"
+
+        <Label Content="{Binding QuestionsAnsweredLabel}" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,10"/>
+
+
+
+
+
+        <Button Content="Back to Menu"
                 Grid.Row="6"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"

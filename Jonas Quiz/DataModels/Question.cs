@@ -20,7 +20,7 @@ namespace Jonas_Quiz.DataModels
 
         public bool IsCorrectOption(string selectedOption)
         {
-            return CorrectAnswer.Option == selectedOption;
+            return CorrectAnswer.OptionNumber.ToString() == selectedOption;
         }
     }
 }

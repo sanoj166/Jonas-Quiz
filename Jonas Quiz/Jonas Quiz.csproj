@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="C:\Users\Jonas\AppData\Local\quiz.json" Link="quiz.json">
+    <None Include="C:\Users\Jonas\AppData\Local\MyQuiz\quiz.json" Link="quiz.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

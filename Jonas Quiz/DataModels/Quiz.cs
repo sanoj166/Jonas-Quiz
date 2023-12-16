@@ -12,8 +12,11 @@ namespace Jonas_Quiz.DataModels
         private List<Question> _questions;
         private string _title = string.Empty;
 
+        
         public IEnumerable<Question> Questions => _questions;
         public string Title => _title;
+
+        private int currentIndex = 0;
 
         public Quiz()
         {
@@ -26,17 +29,29 @@ namespace Jonas_Quiz.DataModels
             _questions = new List<Question>();
         }
 
-        public void ShuffleQuestions()
+        public void StartQuiz()
         {
-            var shuffledQuestions = _questions.OrderBy(q => Guid.NewGuid()).ToList();
-            _questions = shuffledQuestions;
+            ShuffleQuestions();
+            currentIndex = 0;
         }
 
-        public Question? GetRandomQuestion()
+        public void ShuffleQuestions()
         {
-            Random random = new Random();
-            int randomIndex = random.Next(_questions.Count());
-            return _questions.ElementAtOrDefault(randomIndex);
+            _questions = _questions.OrderBy(q => Guid.NewGuid()).ToList();
+        }
+
+
+
+        public Question? GetNextQuestion()
+        {
+            if (currentIndex < _questions.Count)
+            {
+                return _questions[currentIndex++];
+            }
+            else
+            {
+                return null; 
+            }
         }
 
         public void AddQuestion(string statement, int correctAnswer, params string[] answers)

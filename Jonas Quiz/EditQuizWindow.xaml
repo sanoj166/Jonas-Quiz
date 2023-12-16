@@ -1,0 +1,43 @@
+﻿<Window x:Class="Jonas_Quiz.EditQuizWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Edit Quiz" Height="500" Width="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <ListBox x:Name="QuestionsListBox" SelectionChanged="QuestionsListBox_SelectionChanged" Margin="10,10,10,10">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Statement}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,10,0">
+            <Label Content="Statement:"/>
+            <TextBox x:Name="StatementTextBox" Width="250" Height="30" Margin="0,0,0,5"/>
+
+            <Label Content="Answer Options:"/>
+            <TextBox x:Name="Answer1TextBox" Width="250" Height="20" Margin="0,0,0,5"/>
+            <TextBox x:Name="Answer2TextBox" Width="250" Height="20" Margin="0,0,0,5"/>
+            <TextBox x:Name="Answer3TextBox" Width="250" Height="20" Margin="0,0,0,5"/>
+
+            <Label Content="Correct Option:" Margin="0,10,0,0"/>
+            <ComboBox x:Name="CorrectOptionComboBox" Width="100" Height="20" Margin="0,0,0,10">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Option}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Button Content="Save Changes" Width="100" Height="30" Click="SaveChangesButton_Click" Margin="0,10,0,0"/>
+            <Button Content="Back to Menu" Width="100" Height="30" Click="BackToMenuButton_Click" Margin="0,10,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>
