@@ -9,7 +9,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="C:\Users\Jonas\AppData\Local\MyQuiz\quiz.json" Link="quiz.json">
+    <Compile Remove="bin\**" />
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="bin\**" />
+    <None Remove="obj\**" />
+    <Page Remove="bin\**" />
+    <Page Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="MyQuiz\quiz.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -18,10 +29,11 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="quiz.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <ItemGroup>
+      <MyQuizFiles Include="MyQuiz\**\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MyQuizFiles)" DestinationFolder="$(OutputPath)\%(RecursiveDir)" />
+  </Target>
 
 </Project>
