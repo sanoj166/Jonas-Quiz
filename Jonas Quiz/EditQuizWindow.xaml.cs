@@ -23,7 +23,7 @@ namespace Jonas_Quiz
 
         private Quiz LoadQuiz()
         {
-            // Load the quiz from the JSON file
+            
             string quizFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MyQuiz", "quiz.json");
             if (File.Exists(quizFilePath))
             {
@@ -32,10 +32,20 @@ namespace Jonas_Quiz
             }
             else
             {
-                // If the file doesn't exist, create a new quiz
+                
                 return new Quiz("Default Quiz Title");
             }
         }
+
+        private void CorrectOptionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (_selectedQuestion != null && CorrectOptionComboBox.SelectedIndex >= 0)
+            {
+                _selectedQuestion.CorrectAnswer = _selectedQuestion.Options[CorrectOptionComboBox.SelectedIndex];
+            }
+        }
+
+
 
         private void QuestionsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -82,11 +92,19 @@ namespace Jonas_Quiz
                     }
                 }
 
-                
+         
                 QuestionsListBox.Items.Refresh();
 
                 
                 SaveQuiz();
+
+                CorrectOptionComboBox.ItemsSource = _selectedQuestion.Options.Select((option, index) => new { Index = index + 1, Option = option.Option });
+
+                
+                CorrectOptionComboBox.SelectedIndex = _selectedQuestion.CorrectAnswer.OptionNumber - 1;
+
+
+                MessageBox.Show("Changes saved successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 
                 if (Owner is QuizWindow quizWindow)
@@ -95,6 +113,7 @@ namespace Jonas_Quiz
                 }
             }
         }
+
 
 
         private void SaveQuiz()

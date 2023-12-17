@@ -29,13 +29,19 @@
             <TextBox x:Name="Answer3TextBox" Width="250" Height="20" Margin="0,0,0,5"/>
 
             <Label Content="Correct Option:" Margin="0,10,0,0"/>
-            <ComboBox x:Name="CorrectOptionComboBox" Width="100" Height="20" Margin="0,0,0,10">
+            <ComboBox x:Name="CorrectOptionComboBox" Width="100" Height="20" Margin="0,0,0,10"
+          ItemsSource="{Binding Options}"
+          SelectedIndex="{Binding CorrectAnswer.OptionNumber, Mode=TwoWay}"
+          SelectionChanged="CorrectOptionComboBox_SelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Option}" />
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+
+
+
             <Button Content="Save Changes" Width="100" Height="30" Click="SaveChangesButton_Click" Margin="0,10,0,0"/>
             <Button Content="Back to Menu" Width="100" Height="30" Click="BackToMenuButton_Click" Margin="0,10,0,0"/>
         </StackPanel>
